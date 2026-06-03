@@ -38,8 +38,8 @@
   --color-border-strong: rgba(255, 255, 255, 0.16);
 
   /* Fonts */
-  --family-display: 'Syne', sans-serif;
-  --family-body: 'DM Sans', sans-serif;
+  --family-display: 'Inter', sans-serif;
+  --family-body: 'Inter', sans-serif;
   --family-mono: 'Space Mono', monospace;
 
   /* Radius */

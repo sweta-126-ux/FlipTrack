@@ -1,4 +1,4 @@
-import { type RouteConfig, index, prefix, route } from "@react-router/dev/routes";
+import { type RouteConfig, index, prefix, route, layout } from "@react-router/dev/routes";
 
 const isDev = import.meta.env.MODE === "development";
 
@@ -12,20 +12,30 @@ export default [
   route("/changelog", "routes/changelog-page.tsx"),
   route("/privacy", "routes/privacy-policy.tsx"),
   route("/terms", "routes/terms-of-service.tsx"),
-  route("/app/dashboard", "routes/dashboard.tsx"),
-  route("/app/inventory", "routes/inventory-management.tsx"),
-  route("/app/inventory/:id", "routes/inventory-item-detail.tsx"),
-  route("/app/market-prices", "routes/market-prices.tsx"),
-  route("/app/sales", "routes/sales-log.tsx"),
-  route("/app/expenses", "routes/expenses-tracker.tsx"),
-  route("/app/income-statement", "routes/income-statement.tsx"),
-  route("/app/alerts", "routes/price-alerts.tsx"),
-  route("/app/ai-insights", "routes/ai-insights.tsx"),
-  route("/app/settings", "routes/settings.tsx"),
-  route("/app/settings/billing", "routes/billing-management.tsx"),
-  route("/app/tax-report", "routes/tax-report-export.tsx"),
+  
+  ...prefix("/app", [
+    layout("routes/app-layout.tsx", [
+      route("dashboard", "routes/dashboard.tsx"),
+      route("inventory", "routes/inventory-management.tsx"),
+      route("inventory/:id", "routes/inventory-item-detail.tsx"),
+      route("market-prices", "routes/market-prices.tsx"),
+      route("sales", "routes/sales-log.tsx"),
+      route("expenses", "routes/expenses-tracker.tsx"),
+      route("income-statement", "routes/income-statement.tsx"),
+      route("alerts", "routes/price-alerts.tsx"),
+      route("ai-insights", "routes/ai-insights.tsx"),
+      route("settings", "routes/settings.tsx"),
+      route("settings/billing", "routes/billing-management.tsx"),
+      route("tax-report", "routes/tax-report-export.tsx"),
+    ]),
+  ]),
+
   route("/auth/login", "routes/login-page.tsx"),
   route("/auth/signup", "routes/signup-page.tsx"),
   route("/auth/forgot-password", "routes/forgot-password-page.tsx"),
   route("/auth/reset-password", "routes/reset-password-page.tsx"),
+  route("/auth/logout", "routes/auth.logout.ts"),
+  route("/api/cron/refresh-prices", "routes/api.cron.prices.ts"),
+  route("/api/webhooks/stripe", "routes/api.stripe.ts"),
+  route("/api/ai/price-insight", "routes/api.ai.insights.ts"),
 ] satisfies RouteConfig;

@@ -1,8 +1,33 @@
+import { redirect } from "react-router";
+import type { Route } from "./+types/login-page";
+import { getSupabaseServerClient } from "~/utils/supabase.server";
 import styles from "./login-page.module.css";
 import { LoginForm } from "~/blocks/login-page/login-form";
 import { OAuthOptions } from "~/blocks/login-page/o-auth-options";
 import { MagicLinkOption } from "~/blocks/login-page/magic-link-option";
 import { SignupLink } from "~/blocks/login-page/signup-link";
+
+export async function loader({ request }: Route.LoaderArgs) {
+  const { supabase, headers } = getSupabaseServerClient(request);
+  const { data: { user } } = await supabase.auth.getUser();
+  if (user) return redirect("/app/dashboard", { headers });
+  return null;
+}
+
+export async function action({ request }: Route.ActionArgs) {
+  const { supabase, headers } = getSupabaseServerClient(request);
+  const formData = await request.formData();
+  const email = formData.get("email") as string;
+  const password = formData.get("password") as string;
+
+  const { error } = await supabase.auth.signInWithPassword({ email, password });
+  
+  if (error) {
+    return { error: error.message };
+  }
+  
+  return redirect("/app/dashboard", { headers });
+}
 
 export default function LoginPage() {
   return (

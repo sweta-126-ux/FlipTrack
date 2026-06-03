@@ -1,3 +1,4 @@
+import React from "react";
 import { Link, useLocation } from "react-router";
 import { IconChevronRight } from "@tabler/icons-react";
 import styles from "./breadcrumb-navigation.module.css";
@@ -37,16 +38,16 @@ export function BreadcrumbNavigation({ className }: Props) {
     <nav className={[styles.breadcrumb, className].filter(Boolean).join(" ")} aria-label="Breadcrumb">
       <div className={styles.inner}>
         {crumbs.map((crumb, i) => (
-          <>
+          <React.Fragment key={crumb.to}>
             {i > 0 && (
-              <IconChevronRight key={`sep-${i}`} size={12} className={styles.separator} />
+              <IconChevronRight size={12} className={styles.separator} />
             )}
             {crumb.isLast ? (
-              <span key={crumb.to} className={styles.current}>{crumb.label}</span>
+              <span className={styles.current}>{crumb.label}</span>
             ) : (
-              <Link key={crumb.to} to={crumb.to} className={styles.crumb}>{crumb.label}</Link>
+              <Link to={crumb.to} className={styles.crumb}>{crumb.label}</Link>
             )}
-          </>
+          </React.Fragment>
         ))}
       </div>
     </nav>

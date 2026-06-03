@@ -21,10 +21,7 @@ export function HeroSection({ className }: Props) {
       <div className={styles.heroBg} />
       <div className={styles.grid} />
 
-      <div className={styles.badge}>
-        <span className={styles.badgeDot} />
-        Open Source Alternative to Pricely.io
-      </div>
+
 
       <h1 className={styles.headline}>
         Your Reselling Empire,

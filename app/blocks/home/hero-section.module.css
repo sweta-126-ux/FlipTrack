@@ -60,19 +60,23 @@
 
 .headline {
   font-family: var(--family-display);
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  font-weight: 800;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 900;
   line-height: 1.05;
-  letter-spacing: -0.03em;
-  color: var(--color-text);
-  max-width: 800px;
+  letter-spacing: -0.04em;
+  color: #FFFFFF;
+  max-width: 900px;
   margin-bottom: var(--space-6);
   position: relative;
   z-index: 1;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
 }
 
 .accent {
-  color: var(--color-primary);
+  background: linear-gradient(135deg, #00FF88 0%, #00cc6e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .subheadline {
