@@ -150,20 +150,20 @@ FlipTrack relies on a highly decoupled but tightly integrated modern tech stack.
 graph TD
     %% User and UI Layer
     Client([User Browser])
-    UI[React Router v7 UI<br/>(Components & CSS Modules)]
+    UI["React Router v7 UI<br/>(Components & CSS Modules)"]
     
     %% API and Routing Layer
-    Loaders[Route Loaders & Actions<br/>(SSR Data Fetching)]
+    Loaders["Route Loaders & Actions<br/>(SSR Data Fetching)"]
     
     %% Backend/DB Layer
-    Prisma[Prisma Client v5]
+    Prisma["Prisma Client v5"]
     Postgres[(Supabase PostgreSQL)]
     Auth{Supabase Auth}
     
     %% External Services
-    Groq[Groq API<br/>(Llama 3)]
-    VercelAI[Vercel AI SDK]
-    Cron[Cron Jobs<br/>(Market Scrapers)]
+    Groq["Groq API<br/>(Llama 3)"]
+    VercelAI["Vercel AI SDK"]
+    Cron["Cron Jobs<br/>(Market Scrapers)"]
 
     %% Connections
     Client -->|Interacts with| UI
