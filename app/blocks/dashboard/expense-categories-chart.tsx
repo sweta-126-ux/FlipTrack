@@ -1,5 +1,5 @@
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from "recharts";
-import styles from "./dashboard-shared.module.css";
+import styles from "./expense-categories-chart.module.css";
 
 interface Props {
   expenses: {
