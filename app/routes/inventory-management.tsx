@@ -114,6 +114,7 @@ export default function InventoryManagementPage() {
   const [selected, setSelected] = useState<string[]>([]);
   const [editingItem, setEditingItem] = useState<any>(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [duplicateItem, setDuplicateItem] = useState<any>(null);
 
   useEffect(() => {
     if (actionData?.ok) {
@@ -156,10 +157,39 @@ export default function InventoryManagementPage() {
       {selected.length > 0 && (
         <BulkActionsBar count={selected.length} onClear={() => setSelected([])} selectedIds={selected} items={items} />
       )}
-      <InventoryTable selected={selected} onSelectChange={setSelected} items={filteredItems} onEdit={setEditingItem} />
-      {showAddItem && <AddItemModal onClose={() => setShowAddItem(false)} />}
-      {editingItem && <AddItemModal item={editingItem} onClose={() => setEditingItem(null)} />}
-      {showImport && <ImportExcelModal onClose={() => setShowImport(false)} />}
-    </div>
-  );
-}
+     <InventoryTable
+       selected={selected}
+       onSelectChange={setSelected}
+       items={filteredItems}
+       onEdit={setEditingItem}
+       onDuplicate={setDuplicateItem}
+     />
+      {showAddItem && (
+         <AddItemModal onClose={() => setShowAddItem(false)} />
+)}
+
+{editingItem && (
+  <AddItemModal
+    item={editingItem}
+    onClose={() => setEditingItem(null)}
+  />
+)}
+
+{duplicateItem && (
+  <AddItemModal
+    item={{
+      ...duplicateItem,
+      sku: "",
+    }}
+    onClose={() => setDuplicateItem(null)}
+  />
+)}
+
+{showImport && (
+  <ImportExcelModal onClose={() => setShowImport(false)} />
+)}
+   </div>
+ );
+
+
+
