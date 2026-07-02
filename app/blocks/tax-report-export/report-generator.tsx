@@ -1,11 +1,8 @@
 import styles from "./report-generator.module.css";
 
-interface Props {
-  className?: string;
-  selectedYear?: number;
-}
+interface Props { className?: string; }
 
-export function ReportGenerator({ className, selectedYear }: Props) {
+export function ReportGenerator({ className }: Props) {
   return (
     <div className={[styles.card, className].filter(Boolean).join(" ")}>
       <div className={styles.title}>Generate Tax Report</div>
