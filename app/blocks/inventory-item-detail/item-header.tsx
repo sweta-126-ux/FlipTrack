@@ -1,20 +1,20 @@
 import styles from "./item-header.module.css";
 
-interface Props { className?: string; }
+interface Props { className?: string; item: any; }
 
-export function ItemHeader({ className }: Props) {
+export function ItemHeader({ className, item }: Props) {
   return (
     <div className={[styles.header, className].filter(Boolean).join(" ")}>
       <div className={styles.image}>Product Image</div>
       <div className={styles.info}>
-        <div className={styles.sku}>DD1391-100</div>
-        <h1 className={styles.name}>Air Jordan 1 Retro High OG Chicago</h1>
+        <div className={styles.sku}>{item.sku}</div>
+        <h1 className={styles.name}>{item.name}</h1>
         <div className={styles.meta}>
-          <span>Nike</span>
+          <span>{item.brand}</span>
           <span>·</span>
-          <span>Size 10</span>
+          <span>Size {item.size}</span>
           <span>·</span>
-          <span>Deadstock</span>
+          <span>{item.condition}</span>
         </div>
       </div>
       <div className={styles.actions}>
