@@ -2,6 +2,9 @@ import { Link } from "react-router";
 import styles from "./related-items.module.css";
 
 interface Props { className?: string; items: any[]; }
+interface Props {
+  className?: string;
+}
 
 export function RelatedItems({ className, items }: Props) {
   
@@ -10,6 +13,7 @@ export function RelatedItems({ className, items }: Props) {
       <div className={styles.title}>Related Items</div>
       <div className={styles.grid}>
         {items.map(item => (
+        {related.map((item) => (
           <Link key={item.id} to={`/app/inventory/${item.id}`} className={styles.card}>
             <div className={styles.image}>Image</div>
             <div className={styles.name}>{item.name}</div>
