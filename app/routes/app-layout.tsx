@@ -1,7 +1,7 @@
 import { Outlet, redirect, useLoaderData } from "react-router";
 import { getSupabaseServerClient } from "~/utils/supabase.server";
-import { PrismaClient } from "@prisma/client "; 
-type Route = any;
+import { PrismaClient } from "@prisma/client"; 
+import type { Route } from "./+types/app-layout";
 import { AppSidebar } from "~/blocks/__global/app-sidebar";
 import { BreadcrumbNavigation } from "~/blocks/__global/breadcrumb-navigation";
 import styles from "./app-layout.module.css";
@@ -15,7 +15,7 @@ export function headers(_: Route.HeadersArgs) {
 
 const prisma = new PrismaClient();
 
-export async function loader({ request }: any) {
+export async function loader({ request }: Route.LoaderArgs) {
   const { supabase, headers } = getSupabaseServerClient(request);
   const {
     data: { user },

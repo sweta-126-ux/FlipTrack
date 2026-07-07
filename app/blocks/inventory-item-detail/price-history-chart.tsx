@@ -13,13 +13,9 @@ import styles from "./price-history-chart.module.css";
 
 interface Props {
   className?: string;
-  priceHistory: (Pick<MarketPrice, "marketplace"> & {
-    fetchedAt: string | Date;
-    askPrice: number | null;
-    bidPrice: number | null;
-    lastSold: number | null;
-  })[];
-}
+  priceHistory: any[];
+}[];
+
 
 const marketplaceColors: Record<string, string> = {
   stockx: "#00FF88",
