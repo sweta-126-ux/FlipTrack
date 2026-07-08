@@ -9,11 +9,12 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import styles from "./price-history-chart.module.css";
+import type { MarketPrice } from "@prisma/client";
 
 interface Props {
   className?: string;
-  priceHistory: any[];
-}[];
+  priceHistory: MarketPrice[];
+}
 
 
 const marketplaceColors: Record<string, string> = {

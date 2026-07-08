@@ -103,7 +103,7 @@ export default function InventoryItemDetailPage() {
         <PriceHistoryChart priceHistory={item.priceHistory} />
       </div>
 
-      <MarketplaceComparison priceHistory={[]} />
+      <MarketplaceComparison priceHistory={item.priceHistory}  />
       <SalesHistory sale={item.sale} />
       <RelatedItems items={relatedItems} />
     </div>
