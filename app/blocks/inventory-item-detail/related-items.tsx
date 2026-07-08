@@ -21,7 +21,7 @@ export function RelatedItems({ className, items }: Props) {
             <div className={styles.image}>Image</div>
             <div className={styles.name}>{item.name}</div>
             <div className={styles.price}>
-             {<item.askingPrice ?? "N/A"}
+             {item.askingPrice ?? "N/A"}
             </div>
           </Link>
         ))}
