@@ -68,7 +68,7 @@ export async function loader({ request, params }: Route.LoaderArgs) {
             shippingCost: Number(item.sale.shippingCost),
           }
         : null,
-      priceHistory: item.priceHistory.map((ph: { askPrice: any; bidPrice: any; lastSold: any; }) => ({
+      priceHistory: item.priceHistory.map((ph) => ({
         ...ph,
         askPrice: ph.askPrice ? Number(ph.askPrice) : null,
         bidPrice: ph.bidPrice ? Number(ph.bidPrice) : null,
