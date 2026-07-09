@@ -9,11 +9,18 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import styles from "./price-history-chart.module.css";
-import type { MarketPrice } from "@prisma/client";
+
+interface PriceHistoryItem {
+  marketplace: string;
+  fetchedAt: Date;
+  askPrice: number | null;
+  bidPrice: number | null;
+  lastSold: number | null;
+}
 
 interface Props {
   className?: string;
-  priceHistory: MarketPrice[];
+  priceHistory: PriceHistoryItem[];
 }
 
 
