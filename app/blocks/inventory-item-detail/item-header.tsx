@@ -38,14 +38,19 @@ export function ItemHeader({ className, item }: Props) {
         <div className={styles.sku}>{item.sku}</div>
 
         <h1 className={styles.name}>{item.name}</h1>
+      <div className={styles.meta}>
+         <span>{item.brand}</span>
 
-        <div className={styles.meta}>
-          <span>{item.brand}</span>
-          <span>·</span>
-          <span>Size {item.size}</span>
-          <span>·</span>
-          <span>{displayCondition}</span>
-        </div>
+          {item.size && (
+            <>
+            <span>·</span>
+            <span>{item.size}</span>
+        g </>
+  )}
+
+  <span>·</span>
+  <span>{displayCondition}</span>
+      </div>
       </div>
 
       <div className={styles.actions}>
